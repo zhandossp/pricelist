@@ -29,7 +29,6 @@ class SubcategoriesController extends Controller
                     }
 
 
-
                     $model->category_id = $_POST['rod_id'];
                     $model->category_name = $model->category->name;
 

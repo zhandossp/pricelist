@@ -84,7 +84,7 @@ use yii\imagine\Image;
 
                         $product_list = ProductsList::find()->where(['product_id' => $id])->one();
                         if ($product_list != null) {
-                            $product_list->section_id = 1;
+                            $product_list->section_id = $_POST['section'];
                             $product_list->category_id = $_POST['category'];
                             $product_list->subcategory_id = $_POST['subcategory'];
                             $product_list->product_list_count = $_POST['product_list_count'];

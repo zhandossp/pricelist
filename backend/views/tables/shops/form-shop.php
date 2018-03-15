@@ -61,6 +61,12 @@
                     <?=$this->render('/layouts/modal-components/_select', array('info' => array("Статус", "status", array("1" => "Активный", "0" => "Неактивный"), $model->status)))?>
                 </div>
                 <div class = "col-md-12">
+                    <? $load_access = explode(":", Yii::$app->session->get('profile_access')); ?>
+                    <? if (in_array("monetization", $load_access) OR Yii::$app->session->get('profile_role') == "superadmin") { ?>
+                        <?=$this->render('/layouts/modal-components/_input', array('info' => array("Процент монетизации", "monetization", "text", $model->monetization, "true")))?>
+                    <? } ?>
+                </div>
+                <div class = "col-md-12">
                     <div class="form-group">
                         <label class="display-block text-semibold">Изображение:</label>
                         <? if ($model->shop_img != null) { ?>

@@ -1,7 +1,9 @@
 <?php
 namespace backend\controllers;
 
+use api\models\MobileUser;
 use backend\components\Helpers;
+use backend\models\Cities;
 use backend\models\Params;
 use backend\models\Dealers;
 use backend\models\Products;
@@ -27,8 +29,13 @@ class LoadajaxController extends Controller
                     'name' => 'back',
                     'value' => $page
                 ]));
+
+                if ($page == "account") {
+                    $model = Dealers::find()->where(['id' => Yii::$app->session->get('profile_id')])->one();
+                }
+
                 if (Helpers::GetPageAccess($page)) {
-                    return $this->renderPartial('/tables/' . $page . '/index', array('model' => null, 'page' => $page));
+                    return $this->renderPartial('/tables/' . $page . '/index', array('model' => $model, 'page' => $page));
                 } else {
                     return $this->renderPartial('/system/access-denied');
                 }
@@ -66,6 +73,10 @@ class LoadajaxController extends Controller
                     $model = Subcategories::find()->where(['id' => $id])->one();
                 } else if ($page == "params/form-param") {
                     $model = Params::find()->where(['id' => $id])->one();
+                } else if ($page == "users/form-user") {
+                    $model = MobileUser::find()->where(['id' => $id])->one();
+                } else if ($page == "cities/form-city") {
+                    $model = Cities::find()->where(['id' => $id])->one();
                 } else {
                     $model = null;
                 }

@@ -74,7 +74,8 @@ class SiteController extends Controller
                 Yii::$app->session->set('profile_ip', $_SERVER['REMOTE_ADDR']);
                 Yii::$app->session->set('profile_role', $profile->role);
                 Yii::$app->session->set('profile_fio', $profile->fio);
-
+                Yii::$app->session->set('profile_avatar', $profile->avatar);
+                Yii::$app->session->set('profile_access', $profile->access);
 
                 $profile->last_ip = $_SERVER['REMOTE_ADDR'];
                 if ($profile->status == 0) {

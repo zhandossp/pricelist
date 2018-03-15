@@ -66,18 +66,18 @@ class SectionsController extends Controller
                 if (Helpers::CheckAuth("check", null)) {
                     if ($_GET['type'] == "sections") {
                         $res = null;
-                        $model = Categories::find()->where(['section_id' => $_GET['id']])->all();
+                        $model = Categories::find()->where(['section_id' => $_GET['id']])->orderBy(['weight' => 'ASC'])->all();
                         foreach ($model as $key => $value) {
-                            $res .= '<tr data-type = "categories" data-id="'.$value->id.'" class = "select-section"><td>' . $value->name . '</td></tr>';
+                            $res .= '<tr data-type = "categories" data-id="'.$value->id.'" class = "select-section"><td>'. $value->name . '</td></tr>';
                         }
                         $response['body'] = $res;
                         $response['type'] = "categories";
                         $response['get'] = $_GET;
                     } else if ($_GET['type'] == "categories") {
                         $res = null;
-                        $model = Subcategories::find()->where(['category_id' => $_GET['id']])->all();
+                        $model = Subcategories::find()->where(['category_id' => $_GET['id']])->orderBy(['weight' => 'ASC'])->all();
                         foreach ($model as $key => $value) {
-                            $res .= '<tr data-type = "subcategories" data-id="'.$value->id.'" class = "select-section"><td>' . $value->name . '</td></tr>';
+                            $res .= '<tr data-type = "subcategories" data-id="'.$value->id.'" class = "select-section"><td>'. $value->name . '</td></tr>';
                         }
                         $response['body'] = $res;
                         $response['type'] = "subcategories";

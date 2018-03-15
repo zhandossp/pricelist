@@ -12,6 +12,8 @@
             <a data-id = "0" href="geo/form-geo" class="action-link btn bg-success btn-labeled heading-btn legitRipple"><b><i class="icon-plus2"></i></b> Добавить страну<span class="legitRipple-ripple"></span></a>
         <? } else if ($page == "params") { ?>
             <a data-id = "0" href="params/form-param" class="action-link btn bg-success btn-labeled heading-btn legitRipple"><b><i class="icon-plus2"></i></b> Добавить характеристику<span class="legitRipple-ripple"></span></a>
+        <? } else if ($page == "cities") { ?>
+            <a data-id = "0" href="cities/form-city" class="action-link btn bg-success btn-labeled heading-btn legitRipple"><b><i class="icon-plus2"></i></b> Добавить город<span class="legitRipple-ripple"></span></a>
         <? } else if ($page == "shops") { ?>
             <a data-id = "0" href="shops/form-shop" class="action-link btn bg-success btn-labeled heading-btn legitRipple"><b><i class="icon-plus2"></i></b> Добавить магазин<span class="legitRipple-ripple"></span></a>
         <? } ?>

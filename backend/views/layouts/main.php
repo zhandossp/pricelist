@@ -41,6 +41,42 @@
                         <div class="navbar-right">
                             <p class="navbar-text">Здравствуйте  <?=Yii::$app->session->get('profile_fio')?>!</p>
                             <p class="navbar-text"><span class="label bg-success"><?=$roles[Yii::$app->session->get('profile_role')]?></span></p>
+                            <ul class="nav navbar-nav">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <i class="icon-bell2"></i>
+                                        <span class="visible-xs-inline-block position-right">Уведомления</span>
+                                        <span class="status-mark border-orange-400"></span>
+                                    </a>
+
+                                    <div class="dropdown-menu dropdown-content">
+                                        <div class="dropdown-content-heading">Уведомления</div>
+
+                                        <ul class="media-list dropdown-content-body width-350">
+                                            <li class="media">
+                                                <div class="media-left">
+                                                    <a href="#" class="btn bg-success-400 btn-rounded btn-icon btn-xs"><i class="icon-cart"></i></a>
+                                                </div>
+
+                                                <div class="media-body">
+                                                    Новая заявка в магазине "Магазин 1"
+                                                    <div class="media-annotation">21.01.2018 19:02</div>
+                                                </div>
+                                            </li>
+                                            <li class="media">
+                                                <div class="media-left">
+                                                    <a href="#" class="btn bg-purple-300 btn-rounded btn-icon btn-xs"><i class="icon-truck"></i></a>
+                                                </div>
+
+                                                <div class="media-body">
+                                                    Товар доставлен покупателю "Андрей"
+                                                    <div class="media-annotation">21.01.2018 18:30</div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -51,9 +87,9 @@
                                 <div class="sidebar-user-material">
                                     <div class="category-content">
                                         <div class="sidebar-user-material-content">
-                                            <a href="#"><img src="assets/images/placeholder.jpg" class="img-circle img-responsive" alt=""></a>
-                                            <h6 style = "opacity:0;">Price Click</h6>
-                                            <span style ="opacity:0;" class="text-size-small">Администрирование</span>
+                                            <a href="account" class = "cs-link"><img src="/profile/uploads/avatars/<?=Yii::$app->session->get('profile_avatar')?>" class="account_avatar img-responsive" alt=""></a>
+                                            <h6><?=Yii::$app->session->get('profile_fio')?></h6>
+                                            <span class="text-size-small text-muted"><?=$roles[Yii::$app->session->get('profile_role')]?></span>
                                         </div>
 
                                         <div class="sidebar-user-material-menu">

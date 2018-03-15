@@ -43,7 +43,7 @@ class Shops extends \yii\db\ActiveRecord
         return [
             [['created', 'last_edit', 'status'], 'safe'],
           //  [['user_id', 'shop_name', 'city_id'], 'required'],
-            [['user_id', 'dealer_id', 'shop_min_price', 'shop_delivery_price', 'shop_fast_delivery', 'shop_top'], 'integer'],
+            [['user_id', 'dealer_id', 'shop_min_price', 'shop_delivery_price', 'shop_fast_delivery', 'shop_top', 'monetization'], 'integer'],
             [['shop_rating'], 'number'],
             [['shop_fast_delivery', 'shop_top', 'mode', 'mode_order'], 'safe'],
             [['shop_pay_options', 'shop_contacts', 'city_id', 'shop_description'], 'string'],

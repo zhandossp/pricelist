@@ -13,9 +13,10 @@
                 $name = $_POST['name'];
                 $other = (array)$_POST['other'];
                 $config = Helpers::GetConfig($name, "select_fields");
-                //$access = Helpers::GetConfig($name, "access");
+
                 $filtr = Yii::$app->session->get('filtr');
 
+                /* -------------- ВНЕДРЕНИЕ */
                 if (Yii::$app->session->get('profile_role') != "admin" AND Yii::$app->session->get('profile_role') != "superadmin") {
                     if ($name == "sellers") {
                         $query = "rod_id = " . Yii::$app->session->get('profile_id'); //Видят только дилеры
@@ -33,7 +34,10 @@
                         }
                     }
                 } else {
-                    $query = "created != 0";
+                    /* -------------- ВНЕДРЕНИЕ */
+                    if ($table != "order_group") {
+                        $query = "created != -1";
+                    }
                 }
                 $arr_date = array();
 
@@ -60,12 +64,31 @@
                         $condition[$key] = $value;
                     }
                 }
-                $model = (new \yii\db\Query())
-                    ->select($config)
-                    ->from($table)
-                    ->andWhere($condition)
-                    ->andWhere($query)
-                    ->all();
+                if ($table == "order_group") { //Заявки
+                    $model = (new \yii\db\Query())
+                        ->select(
+                            '`order_group`.`id`,
+                            `mobile_user_id`, 
+                            `mobile_user`.`username`, 
+                            `order_group`.`count`,
+                            `order_group`.`overall_summ`,
+                            `order_group`.`address`,
+                            `order_group`.`description`,
+                            `order_group`.`created_date`,
+                            `order_group`.`status`'
+                        )->from($table)
+                        ->andWhere($condition)
+                        ->andWhere($query)
+                        ->innerJoin('mobile_user', '`mobile_user`.`id` = `order_group`.`mobile_user_id`')
+                        ->all();
+                } else {
+                    $model = (new \yii\db\Query())
+                        ->select($config)
+                        ->from($table)
+                        ->andWhere($condition)
+                        ->andWhere($query)
+                        ->all();
+                }
 
                 $data['data'] = array_map('array_values', $model);
                 Yii::$app->response->format = Response::FORMAT_JSON;

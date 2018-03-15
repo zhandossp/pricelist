@@ -34,6 +34,7 @@
                         <input type="text" name = "password" class="form-control" placeholder="Пароль">
                     </div>
                 </div>
+
                 <div class = "col-md-12">
                     <div class="form-group">
                         <label class = "text-semibold">Статус:</label>
@@ -42,6 +43,11 @@
                             <option <? if ($model->status == 0) { ?>selected<? } ?> value="0">Неактивный</option>
                         </select>
                     </div>
+                </div>
+                <?=$this->render("/layouts/priceclick-components/_access", array("name" => "admins", "access" => $model->access))?>
+
+
+                <div class = "col-md-12">
                     <div class="text-right">
                         <a href = "<?=Yii::$app->request->cookies['back']?>" class="cs-link btn btn-default">Отмена <i class="icon-x position-right"></i></a>
                         <? if ($model->id != null) { ?>

@@ -12,10 +12,13 @@
     <form id = "form">
         <div class="panel panel-flat">
             <div class="panel-body">
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <input name="id" type="hidden" class="form-control" value = "<?=$model->id?>">
                     <input name="_csrf-backend" type="hidden" class="form-control" value = "<?=Yii::$app->getRequest()->getCsrfToken()?>">
                     <?=$this->render('/layouts/modal-components/_input', array('info' => array("Название", "name", "text", $model->name, "true")))?>
+                </div>
+                <div class="col-md-6">
+                    <?=$this->render('/layouts/modal-components/_input', array('info' => array("Порядковый номер", "weight", "text", $model->weight, "true")))?>
                 </div>
                 <div class = "col-md-12">
                     <div class="form-group">

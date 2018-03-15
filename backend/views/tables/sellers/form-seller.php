@@ -63,6 +63,8 @@
                     </div>
                 </div>
 
+                <?=$this->render("/layouts/priceclick-components/_access", array("name" => "sellers", "access" => $model->access))?>
+
                 <div class = "col-md-12">
                     <div class="text-right">
                         <a href = "<?=Yii::$app->request->cookies['back']?>" class="cs-link btn btn-default">Отмена <i class="icon-x position-right"></i></a>

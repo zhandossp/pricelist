@@ -240,7 +240,7 @@ a.badge,
   padding: 20px;
 }
 .sidebar-user-material .category-content {
-  background: url(../images/screen.jpg) center center no-repeat;
+  background: url(../images/bg-auth.png) center center no-repeat;
   background-repeat: no-repeat;
   background-position: center center;
   -webkit-background-size: cover;
@@ -11827,7 +11827,7 @@ img ~ .legitRipple-ripple {
   z-index: auto;
 }
 .sidebar-user-material-content .legitRipple {
-  border-radius: 50%;
+  border-radius: 15%;
 }
 .legitRipple-template {
   display: none;

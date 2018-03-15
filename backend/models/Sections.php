@@ -26,7 +26,7 @@ class Sections extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['created'], 'integer'],
+            [['created', 'weight'], 'integer'],
             [['name', 'last_edit'], 'string', 'max' => 500],
         ];
     }

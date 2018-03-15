@@ -68,7 +68,7 @@ use yii\widgets\ActiveForm;
                     <div class="form-group" id = "category">
                         <label class = "text-semibold">Раздел:</label>
                         <div id = "select_category">
-                            <select id = "category" name = "category" class="select"  <?=$select_disabled?> required ="required">
+                            <select id = "category" name = "category" class="select"  <?=$select_disabled?>>
                                 <option value="">Не выбрано</option>
                                 <? if ($product_list->category_id != null) { ?>
                                     <? $categories = Categories::find()->where(['section_id' => $product_list->section_id])->all(); ?>
@@ -84,7 +84,7 @@ use yii\widgets\ActiveForm;
                     <div class="form-group" id = "subcategory">
                         <label class = "text-semibold">Подраздел:</label>
                         <div id = "select_subcategory">
-                            <select id = "subcategory" name = "subcategory" class="select"  <?=$select_disabled?> required ="required">
+                            <select id = "subcategory" name = "subcategory" class="select"  <?=$select_disabled?>>
                                 <option value="">Не выбрано</option>
                                 <? if ($product_list->subcategory_id != null) { ?>
                                     <? $subcategories = Subcategories::find()->where(['category_id' => $product_list->category_id])->all(); ?>
@@ -105,12 +105,6 @@ use yii\widgets\ActiveForm;
                 <div class="col-md-12">
                     <?=$this->render('/layouts/modal-components/_input', array('info' => array("Цена", "product_price", "text", $model->product_price, true)))?>
                 </div>
-                <!--<div class="col-md-12">
-                    <div class="form-group">
-                        <label class = "text-semibold">Количество:</label>
-                        <input type="text" name = "product_list_count" class="form-control" value = "<?=$product_list->product_list_count?>" placeholder="Количество" required="required">
-                    </div>
-                </div>-->
                 <div class="col-md-12">
                     <div class="form-group">
                         <label class = "text-semibold">Размеры (необязательно)<br/><span class = "text-muted">Перечислите размеры через запятую:</span></label>
@@ -179,6 +173,9 @@ use yii\widgets\ActiveForm;
                 </div>
                 <div class = "col-md-12">
                     <?=$this->render('/layouts/modal-components/_textarea', array('info' => array("Описание", "product_description", $model->product_description, true)))?>
+                </div>
+                <div class="col-md-12">
+                    <?=$this->render('/layouts/modal-components/_input', array('info' => array("Ссылка на YouTube видео", "youtube", "text", $model->youtube, true)))?>
                 </div>
                 <div class = "col-md-12">
                     <div class="form-group">

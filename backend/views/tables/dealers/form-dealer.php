@@ -63,8 +63,14 @@
                         <input type="text" name = "password" class="form-control" placeholder="Пароль">
                     </div>
                 </div>
+
                 <div class = "col-md-12">
                     <?=$this->render('/layouts/modal-components/_select', array('info' => array("Статус", "status", array("1" => "Активный", "0" => "Неактивный"), $model->status)))?>
+                </div>
+
+                <?=$this->render("/layouts/priceclick-components/_access", array("name" => "dealers", "access" => $model->access))?>
+
+                <div class = "col-md-12">
                     <div class="text-right">
                         <a href = "<?=Yii::$app->request->cookies['back']?>" class="cs-link btn btn-default">Отмена <i class="icon-x position-right"></i></a>
                         <? if ($model->id != null) { ?>

@@ -40,7 +40,7 @@ use Yii;
             switch ($table) {
                 case "admins":
                     $array = array (
-                        'select_fields' => ['id', 'fio', 'position', 'email', 'phone', 'status', 'last_edit', 'created'],
+                        'select_fields' => ['id', 'fio', 'position', 'email', 'phone', 'status', 'last_edit', 'created', 'avatar'],
                         'filtr' => array (
                             'status' => array (
                                 'label' => 'Статус',
@@ -62,7 +62,7 @@ use Yii;
 
                 case "dealers":
                     $array = array (
-                        'select_fields' => ['id', 'name', 'company', 'fio', 'email', 'phone', 'status', 'last_edit', 'created'],
+                        'select_fields' => ['id', 'name', 'company', 'fio', 'email', 'phone', 'status', 'last_edit', 'created', 'avatar'],
                         'filtr' => array (
                             'status' => array (
                                 'label' => 'Статус',
@@ -84,7 +84,7 @@ use Yii;
 
                 case "sellers":
                     $array = array (
-                        'select_fields' => ['id', 'city', 'seller_type', 'company', 'fio', 'email', 'phone', 'status', 'last_edit', 'created'],
+                        'select_fields' => ['id', 'fio', 'seller_type', 'company', 'city', 'email', 'phone', 'status', 'last_edit', 'created', 'avatar'],
                         'filtr' => array (
                             'status' => array (
                                 'label' => 'Статус',
@@ -202,6 +202,54 @@ use Yii;
                         ),
                     );
                     break;
+                case "users":
+                    $array = array (
+                        'select_fields' => ['id', 'username', 'email', 'phone', 'address', 'last_edit', 'date'],
+                    );
+                    break;
+                case "orders":
+                    $array = array (
+                        'select_fields' => ['id', 'count', 'overall_summ', 'address', 'description', 'mobile_user_id', 'shop_id', 'status', 'updated_date', 'created_date'],
+                        'filtr' => array (
+                            'status' => array (
+                                'label' => 'Статус',
+                                'type' => 'static',
+                                'icon' => 'icon-check',
+                                'data' => array(
+                                    '10' => 'В обработке',
+                                    '0' => 'Отказано',
+                                    '1' => 'Обработан'
+                                )
+                            ),
+                            'created' => array (
+                                'label' => 'Создание',
+                                'type' => 'date',
+                                'icon' => 'icon-calendar'
+                            ),
+                        ),
+                    );
+                    break;
+                case "cities":
+                    $array = array (
+                        'select_fields' => ['id', 'country_id', 'name', 'status', 'last_edit', 'created'],
+                        'filtr' => array (
+                            'status' => array (
+                                'label' => 'Статус',
+                                'type' => 'static',
+                                'icon' => 'icon-check',
+                                'data' => array(
+                                    '1' => 'Активный',
+                                    '0' => 'Неактивный'
+                                )
+                            ),
+                            'created' => array (
+                                'label' => 'Создание',
+                                'type' => 'date',
+                                'icon' => 'icon-calendar'
+                            ),
+                        ),
+                    );
+                    break;
                 default:
                     $array = null;
                     break;
@@ -259,7 +307,41 @@ use Yii;
                 ),
                 "params" => array (
                     'superadmin'
-                )
+                ),
+                "users" => array (
+                    'superadmin'
+                ),
+                'orders' => array (
+                    'superadmin',
+                    'admin',
+                    'dealer',
+                    'seller'
+                ),
+                'cities' => array (
+                    'superadmin'
+                ),
+                'about' => array (
+                    'superadmin'
+                ),
+                'stats-dealers' => array (
+                    'superadmin',
+                    'admin'
+                ),
+                'stats-sellers' => array (
+                    'superadmin',
+                    'admin',
+                    'dealers'
+                ),
+                'stats-shops' => array (
+                    'superadmin',
+                    'admin',
+                    'dealers',
+                    'sellers'
+                ),
+                'stats-users' => array (
+                    'superadmin',
+                    'admin',
+                ),
             );
             if (in_array(Yii::$app->session->get('profile_role'), $array[$page])) {
                 $access = true;

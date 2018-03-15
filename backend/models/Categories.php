@@ -27,7 +27,7 @@ class Categories extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['section_id', 'status', 'created'], 'integer'],
+            [['section_id', 'status', 'created', 'weight'], 'integer'],
             [['name', 'last_edit'], 'string', 'max' => 500],
         ];
     }

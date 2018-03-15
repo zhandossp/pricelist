@@ -37,7 +37,7 @@ class Products extends \yii\db\ActiveRecord
             [['product_imgs', 'product_imgs_min', 'product_description', 'last_edit'], 'string'],
             [['product_price', 'status', 'created', 'dealer_id', 'seller_id'], 'integer'],
             [['product_rating'], 'number'],
-            [['product_name', 'product_main_img', 'sizes'], 'string', 'max' => 255],
+            [['product_name', 'product_main_img', 'sizes', 'youtube'], 'string', 'max' => 255],
             [['product_parameters', 'colors', 'params'], 'string', 'max' => 2000],
            // [['images'], 'file', 'maxFiles' => 10, 'extensions' => 'png, jpg, jpeg'],
         ];

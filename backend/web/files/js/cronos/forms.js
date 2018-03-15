@@ -2,11 +2,6 @@ $( document ).ready(function() {
     var form_login = $('#form_login');
     var form_information = $('#form_information');
     var form_security = $('#form_security');
-    var form = $("#form");
-    var form = $("#form");
-    var form_section = $("#form_section");
-    var form_category = $("#form_category");
-    var form_subcategory = $("#form_subcategory");
 
     /* Аутентификация */
     form_login.on('submit',function(e) {
@@ -61,18 +56,25 @@ $( document ).ready(function() {
             },
         },
         submitHandler: function () {
-            var msg = form_information.serialize();
+            var form = document.getElementById("form_information");
+            var msg = new FormData(form);
             $.ajax({
                 dataType: "json",
                 type: "POST",
                 url: "/profile/account/setinformation/",
-                data:msg,
+                data: msg,
+                cache: true,
+                contentType: false,
+                processData: false,
                 status: startLoading(form_information),
                 success: function(data) {
                     form_information.unblock();
                     SendSwal(data.message, data.type);
                     if (data.type == "success") {
                         $("#last_edit").html(data.last_edit);
+                        if (data.avatar != null) {
+                            $(".account_avatar").attr('src', 'uploads/avatars/' + data.avatar);
+                        }
                     } else if (data.type == "information") {
                         setTimeout(function () {
                             window.location.href = "/profile/authentication/";
@@ -140,153 +142,6 @@ $( document ).ready(function() {
         }
     });
     /* ------------------------ */
-
-
-
-    /* Форма для раздела */
-    form_section.validate({
-        ignore: 'input[type=hidden]',
-        errorClass: 'validation-error-label',
-        successClass: 'validation-valid-label',
-        highlight: function(element, errorClass) {
-            $(element).removeClass(errorClass);
-        },
-        unhighlight: function(element, errorClass) {
-            $(element).removeClass(errorClass);
-        },
-
-        validClass: "validation-valid-label",
-        success: function(label) {
-            label.addClass("validation-valid-label").text("Принято.")
-        },
-        submitHandler: function () {
-            var form = document.getElementById("form_section");
-            var msg = new FormData(form);
-            console.log(msg);
-            $.ajax({
-                dataType: "json",
-                type: "POST",
-                url: "/profile/sections/action/",
-                data: msg,
-                cache: true,
-                contentType: false,
-                processData: false,
-                status: startLoading($("#form_section")),
-                success: function (data) {
-                    var redirect = null;
-                    $("#form_section").unblock();
-                    if (data.type == "information") {
-                        setTimeout(function () {
-                            window.location.href = "/profile/authentication/";
-                        }, 2000);
-                    } else if (data.type == "success") {
-                        redirect = "sections";
-                    }
-                    SendSwal(data.message, data.type, redirect);
-                },
-            }).fail(function (xhr) {
-                console.log(xhr.responseText);
-            });
-            return false;
-        }
-    });
-
-    /* Форма для подраздела */
-    form_category.validate({
-        ignore: 'input[type=hidden]',
-        errorClass: 'validation-error-label',
-        successClass: 'validation-valid-label',
-        highlight: function(element, errorClass) {
-            $(element).removeClass(errorClass);
-        },
-        unhighlight: function(element, errorClass) {
-            $(element).removeClass(errorClass);
-        },
-
-        validClass: "validation-valid-label",
-        success: function(label) {
-            label.addClass("validation-valid-label").text("Принято.")
-        },
-        submitHandler: function () {
-            var form = document.getElementById("form_category");
-            var msg = new FormData(form);
-            console.log(msg);
-            $.ajax({
-                dataType: "json",
-                type: "POST",
-                url: "/profile/categories/action/",
-                data: msg,
-                cache: true,
-                contentType: false,
-                processData: false,
-                status: startLoading($("#form_category")),
-                success: function (data) {
-                    var redirect = null;
-                    $("#form_category").unblock();
-                    if (data.type == "information") {
-                        setTimeout(function () {
-                            window.location.href = "/profile/authentication/";
-                        }, 2000);
-                    } else if (data.type == "success") {
-                        redirect = "categories";
-                    }
-                    SendSwal(data.message, data.type, redirect);
-                },
-            }).fail(function (xhr) {
-                console.log(xhr.responseText);
-            });
-            return false;
-        }
-    });
-
-
-    /* Форма для категории */
-    form_subcategory.validate({
-        ignore: 'input[type=hidden]',
-        errorClass: 'validation-error-label',
-        successClass: 'validation-valid-label',
-        highlight: function(element, errorClass) {
-            $(element).removeClass(errorClass);
-        },
-        unhighlight: function(element, errorClass) {
-            $(element).removeClass(errorClass);
-        },
-
-        validClass: "validation-valid-label",
-        success: function(label) {
-            label.addClass("validation-valid-label").text("Принято.")
-        },
-        submitHandler: function () {
-            var form = document.getElementById("form_subcategory");
-            var msg = new FormData(form);
-            console.log(msg);
-            $.ajax({
-                dataType: "json",
-                type: "POST",
-                url: "/profile/subcategories/action/",
-                data: msg,
-                cache: true,
-                contentType: false,
-                processData: false,
-                status: startLoading($("#form_subcategory")),
-                success: function (data) {
-                    var redirect = null;
-                    $("#form_subcategory").unblock();
-                    if (data.type == "information") {
-                        setTimeout(function () {
-                            window.location.href = "/profile/authentication/";
-                        }, 2000);
-                    } else if (data.type == "success") {
-                        redirect = "subcategories";
-                    }
-                    SendSwal(data.message, data.type, redirect);
-                },
-            }).fail(function (xhr) {
-                console.log(xhr.responseText);
-            });
-            return false;
-        }
-    });
 
     $('body').on('click', '.delete', function (e) {
         e.preventDefault();

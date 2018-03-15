@@ -36,6 +36,14 @@
                         }
                     }
 
+                    if ($_POST['Access'] != null) {
+                        $access = null;
+                        foreach ($_POST['Access'] as $key => $value) {
+                            $access .= ":".$key;
+                        }
+                        $model->access = $access;
+                    }
+
                     if ($good == 1) {
                         $model->attributes = $_POST['Information'];
                         $model->role = "seller";

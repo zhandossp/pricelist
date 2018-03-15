@@ -27,12 +27,12 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <? $categories = Sections::find()->all(); ?>
+                        <? $categories = Sections::find()->orderBy(['weight' => 'ASC'])->all(); ?>
                         <? foreach ($categories as $key => $value) { ?>
                             <tr data-id="<?=$value->id?>" data-type = "sections" class = "select-section">
                                 <td>
                                     <img width = "40" class = "mr-10" style = "border:1px solid grey;" src = "/profile/uploads/sections/<?=$value->section_image?>">
-                                    <?=$value->name?>
+                                    №<?=$value->weight?> <?=$value->name?>
                                 </td>
                             </tr>
                         <? } ?>

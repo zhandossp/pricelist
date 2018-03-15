@@ -30,7 +30,7 @@ class Subcategories extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['section_id', 'category_id', 'created', 'status'], 'integer'],
+            [['section_id', 'category_id', 'created', 'status', 'weight'], 'integer'],
             [['name', 'section_name', 'category_name'], 'string', 'max' => 255],
         ];
     }

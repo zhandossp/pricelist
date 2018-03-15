@@ -1,41 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8a4e8ada-ff0a-4a2b-a961-165ef84217dc" name="Default" comment="Access Denied при попытки просмотра чужих данных">
+    <list default="true" id="8a4e8ada-ff0a-4a2b-a961-165ef84217dc" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/backend/components/Helpers.php" afterPath="$PROJECT_DIR$/backend/components/Helpers.php" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/AccountController.php" afterPath="$PROJECT_DIR$/backend/controllers/AccountController.php" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/AdminsController.php" afterPath="$PROJECT_DIR$/backend/controllers/AdminsController.php" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/DealersController.php" afterPath="$PROJECT_DIR$/backend/controllers/DealersController.php" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/LoadajaxController.php" afterPath="$PROJECT_DIR$/backend/controllers/LoadajaxController.php" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/SectionsController.php" afterPath="$PROJECT_DIR$/backend/controllers/SectionsController.php" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/SellersController.php" afterPath="$PROJECT_DIR$/backend/controllers/SellersController.php" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/SiteController.php" afterPath="$PROJECT_DIR$/backend/controllers/SiteController.php" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/TablesController.php" afterPath="$PROJECT_DIR$/backend/controllers/TablesController.php" />
-      <change beforePath="$PROJECT_DIR$/backend/models/Categories.php" afterPath="$PROJECT_DIR$/backend/models/Categories.php" />
-      <change beforePath="$PROJECT_DIR$/backend/models/Products.php" afterPath="$PROJECT_DIR$/backend/models/Products.php" />
-      <change beforePath="$PROJECT_DIR$/backend/models/Sections.php" afterPath="$PROJECT_DIR$/backend/models/Sections.php" />
-      <change beforePath="$PROJECT_DIR$/backend/models/Shops.php" afterPath="$PROJECT_DIR$/backend/models/Shops.php" />
-      <change beforePath="$PROJECT_DIR$/backend/models/Subcategories.php" afterPath="$PROJECT_DIR$/backend/models/Subcategories.php" />
-      <change beforePath="$PROJECT_DIR$/backend/views/account/index.php" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/views/layouts/header/_filter.php" afterPath="$PROJECT_DIR$/backend/views/layouts/header/_filter.php" />
-      <change beforePath="$PROJECT_DIR$/backend/views/layouts/header/_header.php" afterPath="$PROJECT_DIR$/backend/views/layouts/header/_header.php" />
-      <change beforePath="$PROJECT_DIR$/backend/views/layouts/header/_heading-elements.php" afterPath="$PROJECT_DIR$/backend/views/layouts/header/_heading-elements.php" />
-      <change beforePath="$PROJECT_DIR$/backend/views/layouts/main.php" afterPath="$PROJECT_DIR$/backend/views/layouts/main.php" />
-      <change beforePath="$PROJECT_DIR$/backend/views/layouts/mainmenu.php" afterPath="$PROJECT_DIR$/backend/views/layouts/mainmenu.php" />
-      <change beforePath="$PROJECT_DIR$/backend/views/tables/admins/form-admin.php" afterPath="$PROJECT_DIR$/backend/views/tables/admins/form-admin.php" />
-      <change beforePath="$PROJECT_DIR$/backend/views/tables/dealers/form-dealer.php" afterPath="$PROJECT_DIR$/backend/views/tables/dealers/form-dealer.php" />
-      <change beforePath="$PROJECT_DIR$/backend/views/tables/products/form-product.php" afterPath="$PROJECT_DIR$/backend/views/tables/products/form-product.php" />
-      <change beforePath="$PROJECT_DIR$/backend/views/tables/sections/form-section.php" afterPath="$PROJECT_DIR$/backend/views/tables/sections/form-section.php" />
-      <change beforePath="$PROJECT_DIR$/backend/views/tables/sections/index.php" afterPath="$PROJECT_DIR$/backend/views/tables/sections/index.php" />
-      <change beforePath="$PROJECT_DIR$/backend/views/tables/sellers/form-seller.php" afterPath="$PROJECT_DIR$/backend/views/tables/sellers/form-seller.php" />
-      <change beforePath="$PROJECT_DIR$/backend/views/tables/sellers/index.php" afterPath="$PROJECT_DIR$/backend/views/tables/sellers/index.php" />
-      <change beforePath="$PROJECT_DIR$/backend/views/tables/shops/form-shop.php" afterPath="$PROJECT_DIR$/backend/views/tables/shops/form-shop.php" />
-      <change beforePath="$PROJECT_DIR$/backend/views/tables/shops/index.php" afterPath="$PROJECT_DIR$/backend/views/tables/shops/index.php" />
-      <change beforePath="$PROJECT_DIR$/backend/web/files/css/components.css" afterPath="$PROJECT_DIR$/backend/web/files/css/components.css" />
-      <change beforePath="$PROJECT_DIR$/backend/web/files/js/cronos/forms.js" afterPath="$PROJECT_DIR$/backend/web/files/js/cronos/forms.js" />
-      <change beforePath="$PROJECT_DIR$/backend/web/images/bot.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/backend/web/images/user.png" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -48,7 +15,18 @@
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/backend/views/tables/stats-sellers/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="24" column="25" lean-forward="true" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -389,6 +367,14 @@
               <item name="backend" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="tables" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="stats-sellers" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="engine.zu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="engine.zu" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="backend" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="tables" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="users" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -629,7 +615,7 @@
       <workItem from="1521115461343" duration="1789000" />
       <workItem from="1521117265190" duration="1073000" />
       <workItem from="1521119153488" duration="196000" />
-      <workItem from="1521123301719" duration="973000" />
+      <workItem from="1521123301719" duration="1090000" />
     </task>
     <task id="LOCAL-00001" summary="Сделал отправку E-Mail при создании аккаунта">
       <created>1518701334521</created>
@@ -673,16 +659,24 @@
       <option name="project" value="LOCAL" />
       <updated>1521025351806</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Access Denied при попытки просмотра чужих данных">
+      <created>1521124582088</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1521124582089</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="206619000" />
+    <option name="totallyTimeSpent" value="206736000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="234" y="543" width="1857" height="1092" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18242122" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18242122" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -961,6 +955,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="882">
           <caret line="49" column="51" lean-forward="false" selection-start-line="49" selection-start-column="51" selection-end-line="49" selection-end-column="51" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -998,7 +993,7 @@
         <state relative-caret-position="378">
           <caret line="21" column="83" lean-forward="false" selection-start-line="21" selection-start-column="83" selection-end-line="21" selection-end-column="83" />
           <folding>
-            <element signature="e#55419#55425#0" expanded="true" />
+            <element signature="e#55419#55425#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1056,7 +1051,7 @@
         <state relative-caret-position="975">
           <caret line="75" column="91" lean-forward="false" selection-start-line="75" selection-start-column="91" selection-end-line="75" selection-end-column="91" />
           <folding>
-            <element signature="e#414#440#0#PHP" expanded="true" />
+            <element signature="e#414#440#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1071,11 +1066,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/views/tables/stats-sellers/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="26" column="24" lean-forward="false" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
-          <folding>
-            <element signature="e#205#231#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="396">
+          <caret line="24" column="25" lean-forward="true" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>

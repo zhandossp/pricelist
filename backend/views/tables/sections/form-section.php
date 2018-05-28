@@ -21,16 +21,6 @@
                     <?=$this->render('/layouts/modal-components/_input', array('info' => array("Порядковый номер", "weight", "text", $model->weight, "true")))?>
                 </div>
                 <div class = "col-md-12">
-                    <div class="form-group">
-                        <label class="display-block text-semibold">Изображение:</label>
-                        <? if ($model->section_image != null) { ?>
-                            <div class="form-group">
-                                <img src = "uploads/sections/<?=$model->section_image?>" />
-                            </div>
-                        <? } ?>
-                        <input type="file" name = "Sections[image]" accept="image/*" class="file-styled">
-                        <span class="help-block">Разрешенные форматы: gif, png, jpg.</span>
-                    </div>
                     <div class="text-right">
                         <a href = "<?=Yii::$app->request->cookies['back']?>" class="cs-link btn btn-default">Отмена <i class="icon-x position-right"></i></a>
                         <? if ($model->id != null) { ?>

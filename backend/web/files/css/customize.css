@@ -10,3 +10,7 @@
 .section-active:hover {
     background-color: #4eb0fd !important;
 }
+
+.section-weight:hover {
+    opacity:0.6;
+}

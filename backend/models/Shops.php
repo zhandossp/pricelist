@@ -41,7 +41,7 @@ class Shops extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['created', 'last_edit', 'status'], 'safe'],
+            [['created', 'last_edit', 'status', 'city_id', 'city_title'], 'safe'],
           //  [['user_id', 'shop_name', 'city_id'], 'required'],
             [['user_id', 'dealer_id', 'shop_min_price', 'shop_delivery_price', 'shop_fast_delivery', 'shop_top', 'monetization'], 'integer'],
             [['shop_rating'], 'number'],

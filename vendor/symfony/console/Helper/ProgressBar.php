@@ -144,7 +144,7 @@ final class ProgressBar
      * when the corresponding placeholder is part of the custom format line
      * (by wrapping the name with %).
      *
-     * @param string $message The text to associate with the placeholder
+     * @param string $message The text to associates with the placeholder
      * @param string $name    The name of the placeholder
      */
     public function setMessage($message, $name = 'message')

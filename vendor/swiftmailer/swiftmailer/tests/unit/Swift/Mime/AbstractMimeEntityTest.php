@@ -193,7 +193,7 @@ abstract class Swift_Mime_AbstractMimeEntityTest extends \SwiftMailerTestCase
     public function testDescriptionIsReadFromHeader()
     {
         /* -- RFC 2045, 8.
-        The ability to associate some descriptive information with a given
+        The ability to associates some descriptive information with a given
         body is often desirable.  For example, it may be useful to mark an
         "image" body as "a picture of the Space Shuttle Endeavor."  Such text
         may be placed in the Content-Description header field.  This header

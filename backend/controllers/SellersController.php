@@ -1,6 +1,7 @@
 <?php
     namespace backend\controllers;
-    use Yii;
+    use backend\models\Cities;
+use Yii;
     use backend\models\Dealers;
     use yii\web\Controller;
     use yii\web\Response;
@@ -61,6 +62,13 @@
                         } else {
                             $model->rod_id = Yii::$app->session->get('profile_id');
                         }
+
+
+                        /* ВРЕМЕННО ГОВНОКОД (магазин которому принадлежит) */
+                        $title = Cities::find()->where(['id' => $_POST['Information']['city']])->one();
+                        $model->city_title = $title->name;
+                        /* ----------------- */
+
 
                         if ($_POST['password'] != null) {
                             $password = $_POST['password'];

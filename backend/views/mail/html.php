@@ -87,7 +87,7 @@
                             <tr>
                                 <!-- start of image -->
                                 <td align="center">
-                                    <a target="_blank" href="http://priceclick.kz"><img width = "100%" border="0" alt="" border="0" style="display:block; border:none; outline:none; text-decoration:none;" src="http://pc.maint.kz/backend/web/files/images/mail-logo.jpg" class="logo"></a>
+                                    <a target="_blank" href="http://priceclick.kz"><img width = "100%" border="0" alt="" border="0" style="display:block; border:none; outline:none; text-decoration:none;" src="http://enjine.ja/backend/web/files/images/mail-logo.png" class="logo"></a>
                                 </td>
                             </tr>
                             </tbody>
@@ -126,7 +126,7 @@
                                         <!-- Title -->
                                         <tr>
                                             <td style="font-family: Helvetica, arial, sans-serif; font-size: 14px; font-weight:bold; color: #333333; text-align:left;line-height: 24px;">
-                                                Добро пожаловать на проект Price Click!
+                                                Добро пожаловать на проект Maint Control!
                                             </td>
                                         </tr>
                                         <!-- End of Title -->
@@ -155,7 +155,7 @@
                                         <!-- button -->
                                         <tr>
                                             <td style="font-family: Helvetica, arial, sans-serif; font-size: 13px; font-weight:bold; color: #333333; text-align:left;line-height: 24px;">
-                                                <a href="http://priceclick.zu/profile/" style="color:grey;text-decoration:none;font-weight:bold;">перейти на страницу авторизации</a>
+                                                <a href="http://priceclick.kz/profile/" style="color:grey;text-decoration:none;font-weight:bold;">перейти на страницу авторизации</a>
                                             </td>
                                         </tr>
                                         <!-- /button -->

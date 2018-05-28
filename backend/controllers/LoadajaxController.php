@@ -4,14 +4,24 @@ namespace backend\controllers;
 use api\models\MobileUser;
 use backend\components\Helpers;
 use backend\models\Cities;
+use backend\models\Countries;
+use backend\models\Clients;
+use backend\models\Boxers;
+use backend\models\Magaz;
 use backend\models\Params;
+use backend\models\Category;
 use backend\models\Dealers;
+use backend\models\Pricelist;
 use backend\models\Products;
 use backend\models\Shops;
 use backend\models\Sections;
 use backend\models\Categories;
 use backend\models\Subcategories;
+use backend\models\News;
+use backend\models\Value;
 use yii\web\Response;
+use backend\models\Associate;
+use backend\models\Filters;
 
 use Yii;
 use yii\web\Controller;
@@ -31,7 +41,7 @@ class LoadajaxController extends Controller
                 ]));
 
                 if ($page == "account") {
-                    $model = Dealers::find()->where(['id' => Yii::$app->session->get('profile_id')])->one();
+                    $model = Associate::find()->where(['id' => Yii::$app->session->get('profile_id')])->one();
                 }
 
                 if (Helpers::GetPageAccess($page)) {
@@ -77,7 +87,28 @@ class LoadajaxController extends Controller
                     $model = MobileUser::find()->where(['id' => $id])->one();
                 } else if ($page == "cities/form-city") {
                     $model = Cities::find()->where(['id' => $id])->one();
+                } else if ($page == "countries/form-country") {
+                    $model = Countries::find()->where(['id' => $id])->one();
+                } else if ($page == "clients/form-client") {
+                    $model = Clients::find()->where(['id' => $id])->one();
+                } else if ($page == "boxers/form-boxer") {
+                    $model = Boxers::find()->where(['id' => $id])->one();
+                } else if ($page == "news/form-news") {
+                    $model = News::find()->where(['id' => $id])->one();
+                } else if ($page == "associate/form-associate") {
+                    $model = Associate::find()->where(['id' => $id])->one();
+                } else if ($page == "category/form-category") {
+                    $model = Category::find()->where(['id' => $id])->one();
+                } else if ($page == "magaz/form-magaz") {
+                    $model = Magaz::find()->where(['id' => $id])->one();
+                } else if ($page == "value/form-value") {
+                    $model = Value::find()->where(['id' => $id])->one();
+                } else if ($page == "filters/form-filters") {
+                    $model = Filters::find()->where(['id' => $id])->one();
+                } else if ($page == "pricelist/form-pricelist") {
+                    $model = Pricelist::find()->where(['id' => $id])->one();
                 } else {
+
                     $model = null;
                 }
 

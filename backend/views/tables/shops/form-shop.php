@@ -1,5 +1,7 @@
 <?php
-    use backend\models\Dealers;
+
+use backend\models\Cities;
+use backend\models\Dealers;
 ?>
 <!-- ENGINE -->
 <script type="text/javascript" src="/profile/files/js/plugins/notifications/sweet_alert.min.js"></script>
@@ -35,7 +37,16 @@
                 <div class="col-md-6">
                     <input name="id" type="hidden" class="form-control" value = "<?=$model->shop_id?>">
                     <input name="_csrf-backend" type="hidden" class="form-control" value = "<?=Yii::$app->getRequest()->getCsrfToken()?>">
-                    <?=$this->render('/layouts/modal-components/_input', array('info' => array("Город", "city_id", "text", $model->city_id, "true")))?>
+                    <? $cities_list = Cities::find()->all(); ?>
+                    <div class="form-group">
+                        <label class = "text-semibold">Город:</label>
+                        <select name = "Information[city_id]" class="select" required ="required">
+                            <option value="">Не выбран</option>
+                            <? foreach ($cities_list as $key => $value) { ?>
+                                <option <? if ($value->id == $model->city_id) { ?>selected<? } ?> value="<?=$value->id?>"><?=$value->name?></option>
+                            <? } ?>
+                        </select>
+                    </div>
                 </div>
                 <div class="col-md-6">
                     <?=$this->render('/layouts/modal-components/_input', array('info' => array("Название", "shop_name", "text", $model->shop_name, "true")))?>
@@ -45,20 +56,22 @@
                 </div>
 
                 <div class = "col-md-6">
-                    <?=$this->render('/layouts/modal-components/_input', array('info' => array("Режим работы", "mode", "text", $model->mode, "true")))?>
-                    <?=$this->render('/layouts/modal-components/_input', array('info' => array("Прием заказов по времени", "mode_order", "text", $model->mode_order, "true")))?>
+                    <?=$this->render('/layouts/modal-components/_input', array('info' => array("Режим работы", "mode", "time", $model->mode, "true")))?>
+                    <?=$this->render('/layouts/modal-components/_input', array('info' => array("Прием заказов по времени", "mode_order", "time", $model->mode_order, "true")))?>
 
-                    <?=$this->render('/layouts/modal-components/_input', array('info' => array("Стоимость доставки", "shop_delivery_price", "text", $model->shop_delivery_price, "true")))?>
+                    <?=$this->render('/layouts/modal-components/_input', array('info' => array("Стоимость доставки", "shop_delivery_price", "number", $model->shop_delivery_price, "true")))?>
+                    <?=$this->render('/layouts/modal-components/_select', array('info' => array("Топ", "shop_top", array("1" => "Да", "0" => "Нет"), $model->shop_top)))?>
 
                 </div>
                 <div class = "col-md-6">
-                    <?=$this->render('/layouts/modal-components/_input', array('info' => array("Минимальная сумма заказа", "shop_min_price", "text", $model->shop_min_price, "true")))?>
+                    <?=$this->render('/layouts/modal-components/_input', array('info' => array("Минимальная сумма заказа", "shop_min_price", "number", $model->shop_min_price, "true")))?>
 
                     <div class="form-group">
                         <label class = "text-semibold">Номер телефона:</label>
                         <input type="text" name = "Information[shop_contacts]" data-mask="+7(999)-999-99-99" class="form-control" value = "<?=$model->shop_contacts?>" required = "required" placeholder="Номер телефона">
                     </div>
                     <?=$this->render('/layouts/modal-components/_select', array('info' => array("Статус", "status", array("1" => "Активный", "0" => "Неактивный"), $model->status)))?>
+                    <?=$this->render('/layouts/modal-components/_select', array('info' => array("Быстрая доставка", "shop_fast_delivery", array("1" => "Да", "0" => "Нет"), $model->shop_fast_delivery)))?>
                 </div>
                 <div class = "col-md-12">
                     <? $load_access = explode(":", Yii::$app->session->get('profile_access')); ?>

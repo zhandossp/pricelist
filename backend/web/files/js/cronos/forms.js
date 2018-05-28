@@ -73,7 +73,7 @@ $( document ).ready(function() {
                     if (data.type == "success") {
                         $("#last_edit").html(data.last_edit);
                         if (data.avatar != null) {
-                            $(".account_avatar").attr('src', 'uploads/avatars/' + data.avatar);
+                            $(".account_avatar").attr('src', 'uploads/associate/' + data.avatar);
                         }
                     } else if (data.type == "information") {
                         setTimeout(function () {

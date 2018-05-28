@@ -293,7 +293,7 @@ class Swift_Mime_Headers_UnstructuredHeaderTest extends \SwiftMailerTestCase
         message header comments, phrases, and any unstructured text field.
         This is done by defining an encoded word construct which can appear
         in any of these places.  Given that these are fields intended for
-        display, it is sometimes necessary to associate language information
+        display, it is sometimes necessary to associates language information
         with encoded words as well as just the character set.  This
         specification extends the definition of an encoded word to allow the
         inclusion of such information.  This is simply done by suffixing the

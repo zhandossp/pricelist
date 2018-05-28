@@ -145,26 +145,33 @@ use yii\widgets\ActiveForm;
                             <? if ($model->params != null) { ?>
                                 <? $params = json_decode($model->params, true); ?>
                                 <? foreach ($params as $key => $value) { ?>
-                                    <div class='col-md-12 mb-10' style = 'padding:0;'>
+                                    <? $rand = rand(1000, 9999); ?>
+                                    <div class='col-md-12 mb-10' style = 'padding:10px;border:1px solid #bbbbbb;'>
                                         <div class='form-group'>
                                             <div class='col-lg-2' style = 'padding:0;'>
-                                                <label>Название параметра:</label>
-                                                <select name = "parameter[name][]" class="select" required ="required">
+                                                <label class = 'text-semibold'>Название параметра:</label>
+                                                <select name = 'parameter[<?=$rand?>][]' class='select'>"
                                                     <? $params = Params::find()->where(['status' => 1])->all(); ?>
                                                     <? foreach ($params as $k => $val) { ?>
-                                                        <option <? if ($val->id == $value) { ?>selected<? } ?> value="<?=$val->id?>"><?=$val->name?></option>
+                                                        <option <? if ($val->id == $key) { ?>selected<? } ?> value="<?=$val->id?>"><?=$val->name?></option>
                                                     <? } ?>
                                                 </select>
                                             </div>
-                                            <div class='col-lg-3'>
-                                                <label>Значение параметра:</label>
-                                                <input type='text' name='parameter[value][]' value = '<?=$value?>' class='form-control' placeholder='Значение параметра'>
+                                            <div class='col-lg-6'>
+                                                <label>Действия:</label><br/>
+                                                <button data-key = '<?=$rand?>' id='add-par-button' class='btn btn-success' type='button'>Добавить параметр</button>
+                                                <button id='remove-parameter-button' class='btn btn-danger' type='button'>Удалить характеристику</button>
                                             </div>
-                                           <div class='col-lg-1 mt-15'>
-                                               <button id='remove-parameter-button' class='btn btn-danger' type='button'>X</button>
-                                           </div>
-                                       </div>
-                                    </div>
+                                            <? foreach ($value as $key => $val) { ?>
+                                                <? if ($key != 0) { ?>
+                                                    <div class="col-md-12 mt-10" style="padding:0;">
+                                                        <div class="col-lg-2" style="padding:0;"><label class="text-semibold">Параметр:</label><input type="text" name="parameter[<?=$rand?>][]" class="form-control" value = "<?=$val?>" placeholder="Значение параметра"></div>
+                                                        <div class="col-lg-1"><label>Действия:</label><br><button id="remove-parameter-button" class="btn btn-danger" type="button">Удалить</button></div>
+                                                    </div>
+                                                <? } ?>
+                                            <? } ?>
+                                        </div>
+                                     </div>
                                 <? } ?>
                             <? } ?>
                         </div>
@@ -175,7 +182,7 @@ use yii\widgets\ActiveForm;
                     <?=$this->render('/layouts/modal-components/_textarea', array('info' => array("Описание", "product_description", $model->product_description, true)))?>
                 </div>
                 <div class="col-md-12">
-                    <?=$this->render('/layouts/modal-components/_input', array('info' => array("Ссылка на YouTube видео", "youtube", "text", $model->youtube, true)))?>
+                    <?=$this->render('/layouts/modal-components/_input', array('info' => array("Ссылка на YouTube видео", "youtube", "text", $model->youtube, false)))?>
                 </div>
                 <div class = "col-md-12">
                     <div class="form-group">
@@ -234,6 +241,7 @@ use yii\widgets\ActiveForm;
         $(".colorpicker-palette-only").spectrum({
             showPalette: true,
             showPaletteOnly: true,
+            preferredFormat: "hex",
             palette: palette,
         });
 
@@ -416,5 +424,6 @@ use yii\widgets\ActiveForm;
             console.log(event);
             console.log(data);
         });
+
     });
 </script>

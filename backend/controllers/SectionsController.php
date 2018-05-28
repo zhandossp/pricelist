@@ -31,16 +31,6 @@ class SectionsController extends Controller
                         $model->created = strtotime($today['mday'] . "." . $today['mon'] . "." . $today['year']);
                     }
 
-                    $image = UploadedFile::getInstance($model, 'image');
-                    if ($image != null) {
-                        $rand = rand(1, 9999);
-                        $name = Helpers::GetTransliterate($model->name) . '_' . uniqid() . '_' . $rand . '_' . time() . '.' . $image->extension;
-                        $path = 'uploads/sections/';
-                        Image::thumbnail($image->tempName, 100, 100, ManipulatorInterface::THUMBNAIL_OUTBOUND)
-                            ->save($path . $name, ['quality' => 80]);
-                        $model->section_image = $name;
-                    }
-
                     if ($model->save()) {
                         if ($id != null) {
                             $response['message'] = "Данные успешно изменены";
@@ -183,6 +173,33 @@ class SectionsController extends Controller
                     }
                     Yii::$app->response->format = Response::FORMAT_JSON;
                     return $response;
+                }
+            }
+        }
+
+        public function actionWeight() {
+            if (Yii::$app->request->isAjax) {
+                if (Helpers::CheckAuth("check", null)) {
+                    $id = $_POST['id'];
+                    $type = $_POST['type'];
+                    $model = Sections::find()->where(['id' => $id])->one();
+                    if ($type == "up") {
+                        $model->weight = $model->weight+2;
+                    } else {
+                        $model->weight = $model->weight-2;
+                    }
+                    if ($model->save()) {
+                        $all_sections = Sections::find()->orderBy(['weight' => 'ASC'])->all();
+                        $counter = 0;
+                        foreach ($all_sections as $value) {
+                            $counter++;
+                            $value->weight = $counter;
+                            $value->save();
+                        }
+                        echo 1;
+                    } else {
+                        echo 0;
+                    }
                 }
             }
         }

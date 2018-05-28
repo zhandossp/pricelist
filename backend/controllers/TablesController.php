@@ -89,7 +89,6 @@
                         ->andWhere($query)
                         ->all();
                 }
-
                 $data['data'] = array_map('array_values', $model);
                 Yii::$app->response->format = Response::FORMAT_JSON;
                 return $data;

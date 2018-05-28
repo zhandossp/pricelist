@@ -34,7 +34,7 @@ class Products extends \yii\db\ActiveRecord
     {
         return [
             [['product_name', 'product_price', 'shop_id'], 'required'],
-            [['product_imgs', 'product_imgs_min', 'product_description', 'last_edit'], 'string'],
+            [['product_imgs', 'product_imgs_min', 'product_description', 'last_edit', 'shop_title'], 'string'],
             [['product_price', 'status', 'created', 'dealer_id', 'seller_id'], 'integer'],
             [['product_rating'], 'number'],
             [['product_name', 'product_main_img', 'sizes', 'youtube'], 'string', 'max' => 255],
@@ -64,5 +64,10 @@ class Products extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Dealers::className(), ['id' => 'user_id'])
             ->viaTable(Shops::tableName(), ['shop_id' => 'shop_id']);
+    }
+
+    public function getCity()
+    {
+        return $this->hasOne(Shops::className(), ['shop_id' => 'shop_id']);
     }
 }

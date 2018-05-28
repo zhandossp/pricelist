@@ -22,7 +22,7 @@
                 <div class="navbar navbar-default header-highlight">
                     <div class="navbar-header">
 
-                        <a class="navbar-brand" style = "color:#000;" href="javascript:void(0);"></a>
+                        <a class="navbar-brand" style = "color:#000;" href="javascript:void(0);">PriceList</a>
 
                         <ul class="nav navbar-nav visible-xs-block">
                             <li><a data-toggle="collapse" data-target="#navbar-mobile" class="legitRipple"><i class="icon-tree5"></i></a></li>
@@ -36,7 +36,7 @@
 
                         </ul>
                         <?
-                            $roles = array("superadmin" => "супер-админ", "admin" => "администратор", "dealer" => "дилер", "seller" => "продавец");
+                            $roles = array("superadmin" => "супер-админ", "admin" => "администратор", "dealer" => "дилер", "seller" => "продавец","associate" => "сотрудник");
                         ?>
                         <div class="navbar-right">
                             <p class="navbar-text">Здравствуйте  <?=Yii::$app->session->get('profile_fio')?>!</p>
@@ -54,23 +54,8 @@
 
                                         <ul class="media-list dropdown-content-body width-350">
                                             <li class="media">
-                                                <div class="media-left">
-                                                    <a href="#" class="btn bg-success-400 btn-rounded btn-icon btn-xs"><i class="icon-cart"></i></a>
-                                                </div>
-
                                                 <div class="media-body">
-                                                    Новая заявка в магазине "Магазин 1"
-                                                    <div class="media-annotation">21.01.2018 19:02</div>
-                                                </div>
-                                            </li>
-                                            <li class="media">
-                                                <div class="media-left">
-                                                    <a href="#" class="btn bg-purple-300 btn-rounded btn-icon btn-xs"><i class="icon-truck"></i></a>
-                                                </div>
-
-                                                <div class="media-body">
-                                                    Товар доставлен покупателю "Андрей"
-                                                    <div class="media-annotation">21.01.2018 18:30</div>
+                                                    Уведомлений нет
                                                 </div>
                                             </li>
                                         </ul>
@@ -87,7 +72,7 @@
                                 <div class="sidebar-user-material">
                                     <div class="category-content">
                                         <div class="sidebar-user-material-content">
-                                            <a href="account" class = "cs-link"><img src="/profile/uploads/avatars/<?=Yii::$app->session->get('profile_avatar')?>" class="account_avatar img-responsive" alt=""></a>
+                                            <a href="account" class = "cs-link"><img src="/profile/uploads/associate/<?=Yii::$app->session->get('profile_avatar')?>" class="account_avatar img-responsive" alt=""></a>
                                             <h6><?=Yii::$app->session->get('profile_fio')?></h6>
                                             <span class="text-size-small text-muted"><?=$roles[Yii::$app->session->get('profile_role')]?></span>
                                         </div>

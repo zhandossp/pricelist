@@ -23,16 +23,15 @@
                     <table id="table-sections" class="table table-striped">
                         <thead>
                         <tr>
-                            <th><span class="text-bold">Категории</span></th>
+                            <th><span class="text-bold">Фильтры</span></th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody id = "rod">
                         <? $categories = Sections::find()->orderBy(['weight' => 'ASC'])->all(); ?>
                         <? foreach ($categories as $key => $value) { ?>
                             <tr data-id="<?=$value->id?>" data-type = "sections" class = "select-section">
                                 <td>
-                                    <img width = "40" class = "mr-10" style = "border:1px solid grey;" src = "/profile/uploads/sections/<?=$value->section_image?>">
-                                    №<?=$value->weight?> <?=$value->name?>
+                                    <?=$value->name?>
                                 </td>
                             </tr>
                         <? } ?>
@@ -56,9 +55,9 @@
                 <div class="table-responsive">
                     <table id="table-categories" class="table table-striped">
                         <thead>
-                            <tr>
-                                <th><span class="text-bold">Разделы</span></th>
-                            </tr>
+                        <tr>
+                            <th><span class="text-bold">Значения</span></th>
+                        </tr>
                         </thead>
                         <tbody id = "categories"></tbody>
                     </table>
@@ -82,9 +81,9 @@
                 <div class="table-responsive">
                     <table id="table-subcategories" class="table table-striped">
                         <thead>
-                            <tr>
-                                <th><span class="text-bold">Подразделы</span></th>
-                            </tr>
+                        <tr>
+                            <th><span class="text-bold">Скидка</span></th>
+                        </tr>
                         </thead>
                         <tbody id = "subcategories"></tbody>
                     </table>
@@ -96,4 +95,31 @@
 
     </div>
 </div>
+
+<script>
+    $('body').off('click', '.section-weight');
+    $('body').on('click', '.section-weight', function () {
+        var token = $('meta[name=csrf-token]').attr("content");
+        var id = $(this).data("id");
+        var type = $(this).data("type");
+        var current = $(this);
+        var tr = current.parent().parent();
+        $.ajax({
+            type: "POST",
+            url: "/profile/sections/weight/",
+            data: {"_csrf-backend":token, type:type, id:id},
+            success: function (data) {
+                if (data == 1) {
+                    if (type == "up") {
+                        tr.insertAfter(tr.next());
+                    } else {
+                        tr.insertBefore(tr.prev());
+                    }
+                }
+            },
+        }).fail(function (xhr) {
+            console.log("error");
+        });
+    });
+</script>
 

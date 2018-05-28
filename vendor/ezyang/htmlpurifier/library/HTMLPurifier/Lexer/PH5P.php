@@ -2596,7 +2596,7 @@ class HTML5TreeConstructer
                         /* Insert an input element for the token. */
                         $element = $this->insertElement($token, false);
 
-                        /* If the form element pointer is not null, then associate the
+                        /* If the form element pointer is not null, then associates the
                         input element with the form element pointed to by the form
                         element pointer. */
                         $this->form_pointer !== null

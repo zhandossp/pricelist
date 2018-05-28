@@ -1,7 +1,9 @@
 <?php
 namespace backend\controllers;
 use backend\models\Categories;
+use backend\models\Params;
 use backend\models\ProductsList;
+use backend\models\Shops;
 use backend\models\Subcategories;
 use Yii;
 use backend\models\Products;
@@ -37,6 +39,12 @@ use yii\imagine\Image;
                         $model->shop_id = $_POST['shop_id'];
                     }
 
+                    /* ВРЕМЕННО ГОВНОКОД (магазин которому принадлежит) */
+                    $title = Shops::find()->where(['shop_id' => $model->shop_id])->one();
+                    $model->shop_title = $title->shop_name;
+                    /* ----------------- */
+
+
                     $model->seller_id = $model->seller->id;
                     $model->dealer_id = $model->seller->rod_id;
 
@@ -53,12 +61,22 @@ use yii\imagine\Image;
                     $model->sizes = json_encode($ex_sizes);
 
                     if ($_POST['parameter'] != null) {
-                        $par = array();
+                        /*$par = array();
                         foreach ($_POST['parameter']['name'] as $key => $value) {
                             $par[$value] = $_POST['parameter']['value'][$key];
                         }
+                        $model->params = json_encode($par);*/
+
+                        $par = array();
+                        foreach ($_POST['parameter'] as $key => $value) {
+                            $name = Params::find()->where(['id' => $_POST['parameter'][$key][0]])->one();
+                            $par[] = $value;
+                        }
                         $model->params = json_encode($par);
+                    } else {
+                        $model->params = "";
                     }
+
 
                     $model->colors = json_encode($_POST['colors']);
 
@@ -79,24 +97,33 @@ use yii\imagine\Image;
                         $model->product_main_img = $imagePaths[0];
                     }
 
+                    $params = array("sizes" => json_decode($model->sizes, true), "colors" => json_decode($model->colors));
+                    $model->product_parameters = json_encode($params);
+
 
                     if ($model->save()) {
 
-                        $product_list = ProductsList::find()->where(['product_id' => $id])->one();
+                         $product_list = ProductsList::find()->where(['product_id' => $id])->one();
                         if ($product_list != null) {
                             $product_list->section_id = $_POST['section'];
+							$product_list->shop_id = $model->shop_id;
+                            $product_list->user_id = $model->shop_id;
                             $product_list->category_id = $_POST['category'];
                             $product_list->subcategory_id = $_POST['subcategory'];
                             $product_list->product_list_count = $_POST['product_list_count'];
                             $product_list->product_list_status = $_POST['Information']['status'];
+                            $product_list->city_id = $model->city->city_id;
                         } else {
                             $product_list = new ProductsList();
                             $product_list->product_id = $model->id;
+							$product_list->shop_id = $model->shop_id;
+                            $product_list->user_id = $model->shop_id;
                             $product_list->section_id = $_POST['section'];
                             $product_list->category_id = $_POST['category'];
                             $product_list->subcategory_id = $_POST['subcategory'];
                             $product_list->product_list_count = $_POST['product_list_count'];
                             $product_list->product_list_status = $_POST['Information']['status'];
+                            $product_list->city_id = $model->city->city_id;
                         }
                         $product_list->save();
 
@@ -131,8 +158,8 @@ use yii\imagine\Image;
                     unlink("uploads/products/min/".$img);
                     $model->product_imgs = json_encode($images);
                     $model->save();
-                    //print_r($images);
                     echo 1;
+                    file_put_contents("asd", $model_id);
                 }
             }
         }

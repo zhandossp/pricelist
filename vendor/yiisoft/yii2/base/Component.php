@@ -61,7 +61,7 @@ use yii\helpers\StringHelper;
  *
  * where `on add` stands for attaching an event to the `add` event.
  *
- * Sometimes, you may want to associate extra data with an event handler when you attach it to an event
+ * Sometimes, you may want to associates extra data with an event handler when you attach it to an event
  * and then access it when the handler is invoked. You may do so by
  *
  * ```php

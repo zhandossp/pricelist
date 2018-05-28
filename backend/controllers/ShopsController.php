@@ -1,6 +1,7 @@
 <?php
     namespace backend\controllers;
-    use Yii;
+    use backend\models\Cities;  
+use Yii;
     use backend\models\Shops;
     use yii\web\Controller;
     use yii\web\Response;
@@ -36,6 +37,12 @@
                         $model->user_id = Yii::$app->session->get('profile_id');
                     }
 
+                    /* ВРЕМЕННО ГОВНОКОД (магазин которому принадлежит) */
+                    $title = Cities::find()->where(['id' => $_POST['Information']['city_id']])->one();
+                    $model->city_title = $title->name;
+                    /* ----------------- */
+
+
                     $model->dealer_id = $model->dealer->rod_id;
 
                     $image = UploadedFile::getInstance($model, 'image');
@@ -43,7 +50,7 @@
                         $rand = rand(1, 9999);
                         $name = Helpers::GetTransliterate($model->shop_name) . '_' . uniqid() . '_' . $rand . '_' . time() . '.' . $image->extension;
                         $path = 'uploads/shops/';
-                        Image::thumbnail($image->tempName, 100, 100, ManipulatorInterface::THUMBNAIL_OUTBOUND)
+                        Image::thumbnail($image->tempName, 300, 300, ManipulatorInterface::THUMBNAIL_OUTBOUND)
                             ->save($path . $name, ['quality' => 80]);
                         $model->shop_img = $name;
                     }

@@ -20,7 +20,7 @@ $(function () {
     $('body').on('click', '#add-parameter-button', function(e) {
         e.preventDefault();
         var token = $('meta[name=csrf-token]').attr("content");
-
+        var key = getRandomInt(1000, 9999);
         $.ajax({
             type: "POST",
             url: "/profile/params/getparams/",
@@ -28,25 +28,23 @@ $(function () {
             success: function(data) {
                 console.log(data);
                 var customParameterHtml = "<!-- Parameter -->" +
-                    "                <div class='col-md-12 mb-10' style = 'padding:0;'>" +
+                    "                <div class='col-md-12 mb-10' style = 'padding:10px;border:1px solid #bbbbbb;'>" +
                     "                   <div class='form-group'>" +
                     "                       <div class='col-lg-2' style = 'padding:0;'>" +
-                    "                           <label>Название параметра:</label>" +
-                    "                           <select name = 'parameter[name][]' class='select'>"
+                    "                           <label class = 'text-semibold'>Название параметра:</label>" +
+                    "                           <select name = 'parameter[" + key + "][]' class='select'>"
                                                     + data +
                     "                           </select>" +
                     "                       </div>" +
-                    "                       <div class='col-lg-3'>" +
-                    "                           <label>Значение параметра:</label>" +
-                    "                           <input type='text' name='parameter[value][]' class='form-control' placeholder='Значение параметра'>" +
-                    "                       </div>" +
-                    "                       <div class='col-lg-1 mt-15'>" +
-                    "                           <button id='remove-parameter-button' class='btn btn-danger' type='button'>X</button>" +
+                    "                       <div class='col-lg-6'>" +
+                    "                           <label>Действия:</label><br/>" +
+                    "                           <button data-key = '" + key + "' id='add-par-button' class='btn btn-success' type='button'>Добавить параметр</button>" +
+                    "                           <button id='remove-parameter-button' class='btn btn-danger' type='button'>Удалить характеристику</button>" +
                     "                       </div>" +
                     "                   </div>" +
                     "                </div>";
 
-                $('#parameter-insert-helper').after(customParameterHtml);
+                $('#parameter-insert-helper').append(customParameterHtml);
                 $('.select').select2();
             },
         }).fail(function (xhr) {
@@ -66,15 +64,27 @@ $(function () {
         $(".colorpicker-palette-only").spectrum({
             showPalette: true,
             showPaletteOnly: true,
+            preferredFormat: "hex",
             palette: palette
         });
     });
     /* size parameter button */
+    $('body').off('click', '#remove-parameter-button');
     $('body').on('click', '#remove-parameter-button', function(e) {
         e.preventDefault();
         $(this).closest('.col-md-12').remove();
     });
 
+    $('body').off('click', '#add-par-button');
+    $('body').on('click', '#add-par-button', function(e) {
+        e.preventDefault();
+        var key = $(this).data("key");
+        $(this).parent().parent().append('<div class="col-md-12 mt-10" style = "padding:0;"><div class="col-lg-2" style = "padding:0;"><label class = "text-semibold">Параметр:</label><input type="text" name="parameter[' + key + '][]" class="form-control" placeholder="Значение параметра"></div><div class="col-lg-1"><label>Действия:</label><br/><button id="remove-parameter-button" class="btn btn-danger" type="button">Удалить</button></div></div>');
+    });
 
+    function getRandomInt(min, max)
+    {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
 
 });

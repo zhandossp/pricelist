@@ -194,7 +194,7 @@ class BaseYii
      * from non-alias paths.
      *
      * Note that this method does not check if the given path exists or not. All it does is
-     * to associate the alias with the path.
+     * to associates the alias with the path.
      *
      * Any trailing '/' and '\' characters in the given path will be trimmed.
      *

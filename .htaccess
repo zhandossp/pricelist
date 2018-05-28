@@ -4,7 +4,7 @@ AddCharset utf-8 *
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_URI} !\..+$
 RewriteCond %{REQUEST_URI} !/$
-RewriteRule (.*) http://engine.zu/$1/ [R=301,L]
+RewriteRule (.*) http://engine.ja/$1/ [R=301,L]
 
 RewriteCond %{REQUEST_URI} ^(.*)/{2,}(.*)$
 RewriteRule . %1/%2 [R=301,L]

@@ -11,6 +11,7 @@ use yii\web\Response;
 use Imagine\Image\ManipulatorInterface;
 use yii\imagine\Image;
 use yii\web\UploadedFile;
+use backend\models\Associate;
 
 
 class AccountController extends Controller
@@ -19,7 +20,7 @@ class AccountController extends Controller
     {
         if (Yii::$app->request->isAjax) {
             if (Helpers::CheckAuth("check", null)) {
-                $check_password = Dealers::find()->where(['id' => Yii::$app->session->get('profile_id'), 'password' => md5($_POST['password'])])->one();
+                $check_password = Associate::find()->where(['id' => Yii::$app->session->get('profile_id'), 'password' => md5($_POST['password'])])->one();
                 if ($check_password != null) {
                     $check_password->password = md5($_POST['newpass']);
                     if ($check_password->save()) {
@@ -46,7 +47,7 @@ class AccountController extends Controller
     {
         if (Yii::$app->request->isAjax) {
             if (Helpers::CheckAuth("check", null)) {
-                $profile = Dealers::find()->where(['id' => Yii::$app->session->get('profile_id')])->one();
+                $profile = Associate::find()->where(['id' => Yii::$app->session->get('profile_id')])->one();
                 if ($profile != null) {
                     $profile->attributes = $_POST['Information'];
                     $profile->email = $profile->email;
@@ -56,7 +57,7 @@ class AccountController extends Controller
                     if ($image != null) {
                         $rand = rand(1, 9999);
                         $name = Helpers::GetTransliterate($profile->fio) . '_' . uniqid() . '_' . $rand . '_' . time() . '.' . $image->extension;
-                        $path = 'uploads/avatars/';
+                        $path = 'uploads/associate/';
                         Image::thumbnail($image->tempName, 100, 100, ManipulatorInterface::THUMBNAIL_OUTBOUND)
                             ->save($path . $name, ['quality' => 80]);
                         $profile->avatar = $name;

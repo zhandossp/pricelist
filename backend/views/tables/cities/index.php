@@ -2,7 +2,7 @@
 
 <?=$this->render("/layouts/header/_header")?>
 
-<div class="content">
+<div class="content">  
     <div class="row">
         <div class="col-sm-12 col-lg-12">
             <div class="panel">

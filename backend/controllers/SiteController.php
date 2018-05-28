@@ -1,7 +1,7 @@
 <?php
 namespace backend\controllers;
 
-use backend\models\Dealers;
+use backend\models\Associate;
 use Yii;
 use yii\web\Controller;
 use yii\web\Response;
@@ -38,11 +38,11 @@ class SiteController extends Controller
 
     public function actionRegistration() {
         if (Yii::$app->request->isAjax) {
-            $profile = Dealers::find()->where(['email' => $_POST['email']])->one();
+            $profile = Associate::find()->where(['email' => $_POST['email']])->one();
             if ($profile == null) {
                 $generate_password = Helpers::GeneratePassword();
 
-                $add_account = new Dealers();
+                $add_account = new Associate();
                 $add_account->email = $_POST['email'];
                 $add_account->password = md5($generate_password);
                 $add_account->status = 0;
@@ -64,7 +64,7 @@ class SiteController extends Controller
 
     public function actionLogin() {
         if (Yii::$app->request->isAjax) {
-            $profile = Dealers::find()->where(['email' => $_POST['email'], 'password' => md5($_POST['password'])])->one();
+            $profile = Associate::find()->where(['email' => $_POST['email'], 'password' => md5($_POST['password'])])->one();
             if ($profile != null AND $profile->status == 1) {
                 $request['message'] = "Вы успешно авторизовались";
                 $request['type'] = "success";
@@ -75,12 +75,9 @@ class SiteController extends Controller
                 Yii::$app->session->set('profile_role', $profile->role);
                 Yii::$app->session->set('profile_fio', $profile->fio);
                 Yii::$app->session->set('profile_avatar', $profile->avatar);
-                Yii::$app->session->set('profile_access', $profile->access);
 
-                $profile->last_ip = $_SERVER['REMOTE_ADDR'];
-                if ($profile->status == 0) {
-                    $profile->status = 1;
-                }
+
+                
                 $profile->save();
             } else {
                 if ($profile->status != 1 AND $profile != null) {

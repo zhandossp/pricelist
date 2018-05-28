@@ -1,5 +1,7 @@
 <?
-    use backend\models\Dealers;
+
+use backend\models\Cities;
+use backend\models\Dealers;
 ?>
 <!-- ENGINE -->
 <script type="text/javascript" src="/profile/files/js/plugins/notifications/sweet_alert.min.js"></script>
@@ -35,8 +37,16 @@
                 <div class="col-md-6">
                     <input name="id" type="hidden" class="form-control" value = "<?=$model->id?>">
                     <input name="_csrf-backend" type="hidden" class="form-control" value = "<?=Yii::$app->getRequest()->getCsrfToken()?>">
-                    <?=$this->render('/layouts/modal-components/_input', array('info' => array("Город", "city", "text", $model->city, "true")))?>
-                    <?=$this->render('/layouts/modal-components/_input', array('info' => array("Компания", "company", "text", $model->company, "true")))?>
+                    <? $cities_list = Cities::find()->all(); ?>
+                    <div class="form-group">
+                        <label class = "text-semibold">Город:</label>
+                        <select name = "Information[city]" class="select" required ="required">
+                            <option value="">Не выбран</option>
+                            <? foreach ($cities_list as $key => $value) { ?>
+                                <option <? if ($value->id == $model->city) { ?>selected<? } ?> value="<?=$value->id?>"><?=$value->name?></option>
+                            <? } ?>
+                        </select>
+                    </div>                            <?=$this->render('/layouts/modal-components/_input', array('info' => array("Компания", "company", "text", $model->company, "true")))?>
                     <?=$this->render('/layouts/modal-components/_input', array('info' => array("E-Mail адрес", "email", "email", $model->email, "true")))?>
                     <?=$this->render('/layouts/modal-components/_input', array('info' => array("Юридический адрес", "u_address", "text", $model->u_address, false)))?>
                     <?=$this->render('/layouts/modal-components/_input', array('info' => array("БИН", "bin", "text", $model->bin, false)))?>

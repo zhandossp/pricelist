@@ -4,6 +4,7 @@
     use backend\components\Helpers;
     use backend\models\Dealers;
     use backend\models\Shops;
+    use backend\models\Boxers;
     $config = Helpers::GetConfig($page, "filtr");
 ?>
 

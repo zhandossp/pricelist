@@ -451,7 +451,7 @@ class Model extends Component implements StaticInstanceInterface, IteratorAggreg
     public function createValidators()
     {
         $validators = new ArrayObject();
-        foreach ($this->rules() as $rule) {
+        foreach ($this-> rules() as $rule) {
             if ($rule instanceof Validator) {
                 $validators->append($rule);
             } elseif (is_array($rule) && isset($rule[0], $rule[1])) { // attributes, validator type

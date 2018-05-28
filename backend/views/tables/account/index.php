@@ -34,7 +34,7 @@
                             <label class="display-block text-semibold">Изображение:</label>
                             <? if ($model->avatar != null) { ?>
                                 <div class="form-group">
-                                    <img class = "account_avatar" width = "100" src = "uploads/avatars/<?=$model->avatar?>" />
+                                    <img class = "account_avatar" width = "100" src = "uploads/associate/<?=$model->avatar?>" />
                                 </div>
                             <? } ?>
                             <input type="file" name = "avatar" accept="image/*" class="file-styled">
